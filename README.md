@@ -9,6 +9,13 @@ This repository contains a Python implementation of the kd-switch online predict
 
 [ArXiv version](https://arxiv.org/abs/1901.07662)
 
+It also contains a Python implementation of the k-nearest neighbors based online predictor and the KNN-seq sequential two-sample test of our previous paper:
+
+    A Sequential Non-Parametric Multivariate Two-Sample Test
+    Alix Lhéritier & Frédéric Cazals
+    IEEE Transactions on Information Theory, 64(5):3361–3370, 2018.
+
+
 ## Dependencies
 
 * python >= 2.7
@@ -46,7 +53,7 @@ In our experiments, we used a random subset of the HIGGS dataset from the [UCI M
 This subset can be downloaded in HDF5 format from [here](https://www.dropbox.com/s/x7qdf9bmsvfezl9/HIGGSsubset.zip?dl=0).
 HDF5 format is convenient for sequential tests since it allows constant time sampling.
 
-## GANMNIST dataset
+## GAN generated vs real MNIST dataset
 
 This dataset was generated using the pretrained model available at https://github.com/csinva/gan-pretrained-pytorch.
 The dataset can be downloaded in HDF5 format from [here](https://www.dropbox.com/s/qsg0ujbph1d0ul3/GANMNIST.zip?dl=0)
