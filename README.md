@@ -11,8 +11,8 @@ This repository contains a Python implementation of the kd-switch online predict
 
 ## Dependencies
 
-* pyhon 2.7
-* numpy >= 1.13.0
+* python >= 2.7
+* numpy 
 * h5py
 * lxml
 * scikit-learn
@@ -20,47 +20,38 @@ This repository contains a Python implementation of the kd-switch online predict
 * pandas
 * matplotlib
 * psutil
-
-In order to reproduce the experimental results the following library is required to generate the samples:
-
-* pip install git+https://github.com/wittawatj/interpretable-test
+* pomegranate
 
 
 
 ## Reproducing experimental results
 
-Each experiment is defined in its own shell file in the scripts folder. 
-The scripts parallelize the execution of the different trials. 
-The number of parallel executions needs to be adapted accordingly to the number of cores and memory available. The trial index determines the seed used for randomness.
-For each trial, an xml result file is generated. 
-The script computePower.py  allows to compute power estimates from these xml files.
+Each experiment is defined in its own bash script file in the scripts folder. 
+The trial index determines the seed used for randomness. For each trial, two files are generated: an xml with the summary of the results and a text file containing elpased time, predicted probability for the observed label and cumulated log loss for each data point. 
 
-In order to reproduce the results of each experiment, you should run, in a subfolder of the repository root, the following
+In order to reproduce the results of the paper, you should run each of the following scripts in an empty folder: 
 
 ```
 experiment1.sh 
 experiment2.sh
-experiment3.sh
 ```
 
-For the first experiment, the CASE variable must be set with one of following values: {sg,gmd,gvd,blobs}. 
+The DATAPATH variable needs to point to the folder containing HIGGS and GANMNIST datasets.
+The PYTHONPATH variable needs to include the code and scripts folders.
 
-Then, in the same folder where the xml files were produced, you should execute for each experiment, respectively
-
-```
-python ../../scripts/computePower.py -n 1000,2000,3000,4000,5000 -g
-python ../../scripts/computePower.py -n 804
-python ../../scripts/computePower.py -n 27424
-```
-
-Note that -g makes the script interpret n as in [Jitkrittum et al. 2016](https://papers.nips.cc/paper/6148-interpretable-distribution-features-with-maximum-testing-power).
 
 ## Higgs boson dataset
 
 In our experiments, we used a random subset of the HIGGS dataset from the [UCI Machine Learning Repository](https://archive.ics.uci.edu/ml/datasets/HIGGS). 
 This subset can be downloaded in HDF5 format from [here](https://www.dropbox.com/s/x7qdf9bmsvfezl9/HIGGSsubset.zip?dl=0).
 HDF5 format is convenient for sequential tests since it allows constant time sampling.
-These .h5 files need to be located in a folder called data at the root of the repository.  
+
+## GANMNIST dataset
+
+This dataset was generated using the pretrained model available at https://github.com/csinva/gan-pretrained-pytorch.
+The dataset can be downloaded in HDF5 format from [here](https://www.dropbox.com/s/qsg0ujbph1d0ul3/GANMNIST.zip?dl=0)
+
+
 
 ## License
 [MIT license](https://github.com/alherit/kd-switch/blob/master/LICENSE).

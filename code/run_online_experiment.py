@@ -14,7 +14,6 @@ import numpy as np
 from KDSwitch import SeqForest
 from SeqKNN import SeqKnnBmaSw
 from SeqGP import SeqGPBmaSw
-from SeqGNB import SeqGNB
 from SeqTrue import NClassGaussianMixture
 from DataGen import mySSSameGauss,mySSBlobs,mySSGaussMeanDiff,mySSGaussVarDiff
 
@@ -437,7 +436,7 @@ class TST:
 
             nll = -cumCProb.getLogWeightProb()/n
             self.probs_file.write(str(time.process_time()-self.start_time)+" "+str(condProb)+" "+str(nll)+ "\n")
-            #str(lp.label)+" "+
+            
 
             self.processed.append(lp)
 
@@ -591,7 +590,7 @@ if __name__ == "__main__":
                           data_gen_seed = data_gen_seed, stop_when_reject=options.stop_when_reject, synth_dim=options.synth_dim,
                           mean_gmd=options.mean_gmd, var_gvd=options.var_gvd, estimate_median_pdist=(options.model=="gp"))
 
-
+        tst.set_start_time()
 
         if options.model == "kds":
             tst.setModel ( SeqForest(J=options.nTrees, dim=tst.dim, alpha_label=alpha_size, 
