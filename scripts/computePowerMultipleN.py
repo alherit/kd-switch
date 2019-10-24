@@ -11,7 +11,6 @@ def computePower(base_dir,grettonScale=False):
 
     print(base_dir)
     
-    ####TODO: make a dictionary to put results
     dic = dict()
     
 
@@ -82,11 +81,6 @@ def computePower(base_dir,grettonScale=False):
                         print("WARNING file " + f + ": didn't reject and didn't reach required time=> assuming no reject. Stopping time was: " + str(stopping_time), "n is", n)
             
             
-#                if len(set(alphas)) <= 1:
-#                    print("alpha: ",alphas[0])
-#                else:
-#                    exit("inconsistent alphas:" + str(alphas))
-
                 ntrials = len(files)            
                 if ntrials!=500:
                     print("wrong number of trials")

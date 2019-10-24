@@ -21,31 +21,6 @@ import seaborn as sns
 
 
 
-
-
-
-#df = pd.read_csv("C:\\Users\\alheritier\\Desktop\\deleteme2\\BLOBS\\gp\\probs_seq_0.dat", sep=" ", header=None, names=["time","prob","NLL"])
-#algo = "gp"
-#trial = 0
-#df["algorithm"] = algo
-#df["trial"] = trial
-#
-#df.index = pd.DatetimeIndex(df["time"]*(10**9))
-#
-#df = df.resample("5s").last()
-#df["NLL"] = df["NLL"].interpolate(method="linear")
-#del df["time"]
-#df = df.reset_index()
-#df["elapsed_time"] = df["time"] - df.iloc[0]["time"]
-
-
-
-
-# for each trial get closest points to regular grid given by resolution, 
-# use resample, take first of each time interval
-# fit GP on these points
-
-
 def plotCurveTime(basedir,n_trials,resolution, max_time=None , log_x = False):
     print("n_trials",n_trials)
     print("resolution: " , resolution)
@@ -151,8 +126,6 @@ def plotCurveNVsTime(basedir,n_trials,resolution, max_time=None ,min_y = None , 
                     
                     if max_time is not None:
                         df = df[df["elapsed_time (s)"] <= max_time]
-#                    if max_time is not None:
-#                        df = df[df["n"] <= max_time]
 
                     
                     dfs.append(df)    
@@ -323,21 +296,12 @@ def foo_callback2(option, opt, value, parser):
 
 if __name__ == "__main__":
     
-    #plotCurveTime(basedir="C:\\Users\\alheritier\\Desktop\\deleteme2\\BLOBS",n_trials=20,resolution=10)
-    
     from optparse import OptionParser
 
     parser = OptionParser()
 
     parser.add_option('-d','--basedir', dest='basedir', type='string',
                       help='basedir [default: %default]', default=".")
-
-#    parser.add_option('-d', '--dir', dest='base_dirs',
-#                  type='string',
-#                  help='comma separated list of directories containing results [default: %default]', 
-#                  action='callback',
-#                  default=".",
-#                  callback=foo_callback2)
 
     parser.add_option('-r', '--resolution', dest='resolution', type='int',
                       help='index/time resolution [default: %default]', default=1000)
