@@ -15,6 +15,7 @@ It also contains a Python implementation of the k-nearest neighbors based online
     Alix Lhéritier & Frédéric Cazals
     IEEE Transactions on Information Theory, 64(5):3361–3370, 2018.
 
+This repository contains the Python implementation used to produce the results in the paper. For a more efficient C++ implementation with Python bindings, see https://github.com/alherit/kd-switch-cpp.
 
 ## Dependencies
 
